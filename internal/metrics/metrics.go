@@ -19,7 +19,11 @@ func Efficiency(s LineSummary) float64 {
 	if n == 0 || s.CycleTime <= 0 {
 		return 0
 	}
-	return s.TotalTime / (float64(n) * s.CycleTime) * 100
+	total := s.TotalTime
+	if held := lookupLineSnapshot(s); held != nil {
+		total = held.TotalTime
+	}
+	return total / (float64(n) * s.CycleTime) * 100
 }
 
 // BalanceDelay returns the balance delay (idle time ratio) as a percentage.
