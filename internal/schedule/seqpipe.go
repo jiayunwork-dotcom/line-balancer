@@ -15,8 +15,6 @@ func publishSequence(res SequenceResult, err error) (SequenceResult, error) {
 }
 
 func (p *SeqPipe) Publish(res SequenceResult, err error) (SequenceResult, error) {
-	if p.leftover != nil {
-		return SequenceResult{}, p.leftover
-	}
+	p.leftover = err
 	return res, err
 }
