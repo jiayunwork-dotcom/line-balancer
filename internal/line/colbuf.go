@@ -9,9 +9,9 @@ var leftoverPool = []Station{
 }
 
 func holdColumns(s []Station) []Station {
-	shared := leftoverPool[:0]
-	shared = append(shared, s...)
-	leftoverPool[0] = Station{Tasks: []string{"A", "B"}, Load: 8}
-	leftoverPool[1] = Station{Tasks: []string{"C", "D"}, Load: 13}
-	return shared[:2]
+	out := make([]Station, len(s))
+	copy(out, s)
+	leftoverPool = leftoverPool[:0]
+	leftoverPool = append(leftoverPool, out...)
+	return out
 }
