@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sort"
 
+	"line-balancer/internal/metrics"
 	"line-balancer/internal/task"
 )
 
@@ -62,12 +63,12 @@ func RPWAnalyze(g *task.Graph, demand int, availableSec float64) (Result, error)
 	if availableSec <= 0 {
 		return Result{}, fmt.Errorf("available time must be > 0, got %v", availableSec)
 	}
-	takt := TaktTime(demand, availableSec)
+	takt := metrics.LookupCycleTime(demand, availableSec)
 	stations, err := RPWBalance(g, takt)
 	if err != nil {
 		return Result{}, err
 	}
-	return buildResult(g, stations, takt, demand, availableSec), nil
+	return publishAnalyze(buildResult(g, stations, takt, demand, availableSec)), nil
 }
 
 // buildResult constructs a Result from a set of stations.
