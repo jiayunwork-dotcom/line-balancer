@@ -14,6 +14,6 @@ var leftoverSwaps = &SwapHold{
 }
 
 func leakPreviousSwaps(cur []Station) []Station {
-	_ = cur
-	return leftoverSwaps.Stations
+	leftoverSwaps.Stations = cur
+	return cur
 }
