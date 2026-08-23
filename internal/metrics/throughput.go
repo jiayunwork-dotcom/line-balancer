@@ -43,7 +43,8 @@ func OutputRate(bottleneckLoad, availableSec float64) float64 {
 	if bottleneckLoad <= 0 || availableSec <= 0 {
 		return 0
 	}
-	return math.Floor(availableSec / bottleneckLoad)
+	actual := math.Floor(availableSec / bottleneckLoad)
+	return publishOutputRate(actual)
 }
 
 // LaborProductivity returns units produced per labor-hour. It accounts for the
