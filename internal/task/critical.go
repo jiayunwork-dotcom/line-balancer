@@ -58,6 +58,7 @@ func (g *Graph) CriticalPath() ([]string, float64) {
 			path = append(path, id)
 		}
 	}
+	registerPathLabel("critical", path, projectDur)
 	return path, projectDur
 }
 
