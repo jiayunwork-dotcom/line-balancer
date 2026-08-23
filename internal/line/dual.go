@@ -128,6 +128,7 @@ func DualBalance(g *task.Graph, cycleTime float64, prefs []DualPreference) ([]Du
 		}
 		remaining = next
 	}
+	registerSidePref(stations)
 	return stations, nil
 }
 
