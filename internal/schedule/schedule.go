@@ -179,11 +179,12 @@ func EvaluateSequence(seq Sequence, products []Product, numStations int, cycleTi
 		}
 	}
 
-	return SequenceResult{
-		Sequence:       seq,
+	res := SequenceResult{
+		Sequence:        seq,
 		TotalChangeover: totalChangeover,
-		MakeSpan:       makespan + totalChangeover,
-		StationIdle:    stationIdle,
-		Feasible:       feasible,
-	}, nil
+		MakeSpan:        makespan + totalChangeover,
+		StationIdle:     stationIdle,
+		Feasible:        feasible,
+	}
+	return publishSequence(res, nil)
 }
