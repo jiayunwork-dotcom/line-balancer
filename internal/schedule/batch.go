@@ -93,11 +93,12 @@ func CreateBatchPlan(seq Sequence, cfg BatchConfig, cm *ChangeoverMatrix) (Batch
 		}
 	}
 
-	return BatchPlan{
+	plan := BatchPlan{
 		Batches:         merged,
 		TotalChangeover: totalCO,
 		NumChangeovers:  numCO,
-	}, nil
+	}
+	return lookupBatchPlan(plan), nil
 }
 
 // mergeUndersized merges batches smaller than minSize into their neighbors.
