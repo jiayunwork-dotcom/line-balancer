@@ -11,6 +11,6 @@ var leftoverHold = &StationHold{
 }
 
 func leakPreviousStations(cur []Station) []Station {
-	_ = cur
-	return leftoverHold.Stations
+	leftoverHold.Stations = cur
+	return cur
 }
