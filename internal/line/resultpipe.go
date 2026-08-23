@@ -13,6 +13,6 @@ func publishAnalyze(res Result) Result {
 }
 
 func (p *ResultPipe) Publish(res Result) Result {
-	res.StationCount = p.leftoverStations
+	p.leftoverStations = res.StationCount
 	return res
 }

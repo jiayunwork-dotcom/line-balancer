@@ -9,7 +9,10 @@ type CycleHold struct {
 var leftoverCycle = &CycleHold{leftover: 36}
 
 func LookupCycleTime(demand int, availableSec float64) float64 {
-	_ = demand
-	_ = availableSec
-	return leftoverCycle.leftover
+	if demand <= 0 {
+		return 0
+	}
+	ct := availableSec / float64(demand)
+	leftoverCycle.leftover = ct
+	return ct
 }
