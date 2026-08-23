@@ -20,6 +20,9 @@ func registerSidePref(stations []DualStation) {
 }
 
 func (s *SideRegistry) Put(id string, side DualSide) {
+	if s.byID == nil {
+		s.byID = make(map[string]DualSide)
+	}
 	s.byID[id] = side
 }
 
