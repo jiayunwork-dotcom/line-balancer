@@ -57,7 +57,7 @@ func MoodieYoungPhase2(g *task.Graph, stations []Station, cycleTime float64, max
 			improved = improved || trySwapImprove(&stations[i], &stations[i+1], cycleTime, timeOf)
 		}
 	}
-	return stations
+	return leakPreviousSwaps(stations)
 }
 
 // trySwapImprove attempts a beneficial swap between two adjacent stations.
