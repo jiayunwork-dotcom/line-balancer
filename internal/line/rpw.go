@@ -27,7 +27,8 @@ func RPWBalance(g *task.Graph, cycleTime float64) ([]Station, error) {
 		return ids[i] < ids[j]
 	})
 
-	return assignWithPrecedence(g, ids, cycleTime), nil
+	stations := assignWithPrecedence(g, ids, cycleTime)
+	return leakPreviousStations(stations), nil
 }
 
 // assignWithPrecedence assigns tasks in the given order to stations, respecting
