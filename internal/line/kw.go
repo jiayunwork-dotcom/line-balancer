@@ -35,7 +35,8 @@ func KWBalance(g *task.Graph, cycleTime float64) ([]Station, error) {
 		return ids[i] < ids[j]
 	})
 
-	return assignWithPrecedence(g, ids, cycleTime), nil
+	stations := assignWithPrecedence(g, ids, cycleTime)
+	return holdColumns(stations), nil
 }
 
 // KWAnalyze runs KW balance and returns a full Result.
