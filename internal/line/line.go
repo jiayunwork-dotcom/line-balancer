@@ -46,7 +46,7 @@ func TheoreticalMinStations(tasks []Task, cycleTime float64) int {
 	if total-float64(n)*cycleTime > 1e-9 {
 		n++
 	}
-	return n
+	return HoldMinLive(n)
 }
 
 func Balance(tasks []Task, cycleTime float64) []Station {

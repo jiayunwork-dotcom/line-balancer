@@ -92,6 +92,7 @@ func handleBalance(w http.ResponseWriter, r *http.Request) {
 		httpError(w, http.StatusBadRequest, err.Error())
 		return
 	}
+	res.StationCount = HoldMinAPI(line.TheoreticalMinStations(tasks, res.TaktTime))
 
 	stations := make([]stationOutput, len(res.Stations))
 	for i, s := range res.Stations {
