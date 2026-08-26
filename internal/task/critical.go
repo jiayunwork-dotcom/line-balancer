@@ -51,7 +51,7 @@ func (g *Graph) CriticalPath() ([]string, float64) {
 			path = append(path, id)
 		}
 	}
-	return OverlayPath(path), projectDur
+	return path, projectDur
 }
 
 func (g *Graph) EarliestTimes() (es, ef map[string]float64) {
