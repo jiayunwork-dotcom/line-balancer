@@ -1,0 +1,9 @@
+task_id,seconds,predecessors
+cut,40,-
+weld,45,cut
+paint,30,weld
+assemble,60,paint;polish
+inspect,20,assemble
+pack,25,inspect
+polish,35,cut
+test,15,pack
