@@ -101,7 +101,7 @@ func Analyze(tasks []Task, demand int, availableSec float64) (Result, error) {
 	if len(stations) > 0 && takt > 0 {
 		eff = total / (float64(len(stations)) * takt) * 100
 	}
-	return Result{
+	res := Result{
 		TaktTime:     takt,
 		CycleTime:    takt,
 		Stations:     stations,
@@ -110,7 +110,9 @@ func Analyze(tasks []Task, demand int, availableSec float64) (Result, error) {
 		MaxLoad:      maxLoad,
 		Efficiency:   eff,
 		TotalTime:    total,
-	}, nil
+	}
+	res.StationCount = HoldCountLive(res.StationCount)
+	return res, nil
 }
 
 func ParseTasks(r io.Reader) ([]Task, error) {

@@ -100,7 +100,7 @@ func handleBalance(w http.ResponseWriter, r *http.Request) {
 
 	writeJSON(w, http.StatusOK, balanceResponse{
 		TaktTime:     res.TaktTime,
-		StationCount: res.StationCount,
+		StationCount: HoldCountAPI(res.StationCount),
 		Bottleneck:   res.Bottleneck,
 		MaxLoad:      res.MaxLoad,
 		Efficiency:   res.Efficiency,
