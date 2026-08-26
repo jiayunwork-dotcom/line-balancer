@@ -79,7 +79,7 @@ func Balance(tasks []Task, cycleTime float64) []Station {
 
 func Analyze(tasks []Task, demand int, availableSec float64) (Result, error) {
 	if demand <= 0 {
-		return Result{}, fmt.Errorf("demand must be > 0, got %d", demand)
+		return Result{}, bindDemand(fmt.Errorf("demand must be > 0, got %d", demand), demand)
 	}
 	if availableSec <= 0 {
 		return Result{}, fmt.Errorf("available time must be > 0, got %v", availableSec)
