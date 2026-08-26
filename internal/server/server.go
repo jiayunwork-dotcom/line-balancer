@@ -137,6 +137,7 @@ func handleTakt(w http.ResponseWriter, r *http.Request) {
 		req.Available = 28800
 	}
 	tt := line.TaktTime(req.Demand, req.Available)
+	tt = HoldTaktAPI(tt)
 	writeJSON(w, http.StatusOK, taktResponse{TaktTime: tt, Demand: req.Demand})
 }
 

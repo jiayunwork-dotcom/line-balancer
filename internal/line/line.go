@@ -31,7 +31,8 @@ type Result struct {
 }
 
 func TaktTime(demand int, availableSec float64) float64 {
-	return availableSec / float64(demand)
+	tt := availableSec / float64(demand)
+	return HoldTaktLive(tt)
 }
 
 func TheoreticalMinStations(tasks []Task, cycleTime float64) int {
