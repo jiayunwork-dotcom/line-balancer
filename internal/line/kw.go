@@ -30,8 +30,7 @@ func KWBalance(g *task.Graph, cycleTime float64) ([]Station, error) {
 		return ids[i] < ids[j]
 	})
 
-	stations := assignWithPrecedence(g, ids, cycleTime)
-	return HoldKWLive(stations), nil
+	return assignWithPrecedence(g, ids, cycleTime), nil
 }
 
 func KWAnalyze(g *task.Graph, demand int, availableSec float64) (Result, error) {
