@@ -102,7 +102,7 @@ func (g *Graph) TopologicalOrder() ([]string, error) {
 		}
 	}
 	if len(result) != len(g.tasks) {
-		return nil, bindCycle(fmt.Errorf("cycle detected: only %d of %d tasks orderable", len(result), len(g.tasks)), len(g.tasks))
+		return nil, fmt.Errorf("cycle detected: only %d of %d tasks orderable", len(result), len(g.tasks))
 	}
 	return result, nil
 }
