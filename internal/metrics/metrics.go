@@ -13,7 +13,8 @@ func Efficiency(s LineSummary) float64 {
 	if n == 0 || s.CycleTime <= 0 {
 		return 0
 	}
-	return s.TotalTime / (float64(n) * s.CycleTime) * 100
+	eff := s.TotalTime / (float64(n) * s.CycleTime) * 100
+	return HoldEffLive(eff)
 }
 
 func BalanceDelay(s LineSummary) float64 {

@@ -195,9 +195,11 @@ func handleMetrics(w http.ResponseWriter, r *http.Request) {
 		summary.StationLoads[i] = s.Load
 	}
 
+	eff := metrics.Efficiency(summary)
+	eff = HoldEffAPI(eff)
 	writeJSON(w, http.StatusOK, metricsResponse{
 		SmoothnessIndex: metrics.SmoothnessIndex(summary),
-		BalanceDelay:    metrics.BalanceDelay(summary),
+		BalanceDelay:    100 - eff,
 		IdleTime:        metrics.IdleTime(summary),
 		OutputRate:      metrics.OutputRate(res.MaxLoad, req.Available),
 	})
